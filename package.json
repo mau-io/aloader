@@ -1,0 +1,22 @@
+{
+  "name": "aloader",
+  "version": "1.0.0",
+  "description": "Automatic files loader for Node Js.",
+  "main": "index.js",
+  "devDependencies": {
+    "mocha": "^7.1.0"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mau-io/aloader.git"
+  },
+  "author": "Maurice T",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mau-io/aloader/issues"
+  },
+  "homepage": "https://github.com/mau-io/aloader#readme"
+}
