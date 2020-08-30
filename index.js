@@ -1,5 +1,5 @@
 const { readdirSync, statSync } = require('fs');
-const { join , basename, extname } = require('path');
+const { join, basename, extname } = require('path');
 
 const ANSI = {
   reset: '\033[0m',
@@ -7,6 +7,7 @@ const ANSI = {
   green: '\033[32m',
   blue:  '\033[34m',
 }
+
 module.exports = class Loader {
 
   constructor({verbose = false } = {}) {
@@ -16,19 +17,23 @@ module.exports = class Loader {
   
   path(path) {
     this._modules = new Map();
-    const folderList = this._getFolders(path);
+    const elements = this._getElements(path);
 
-    folderList.forEach(folder => {
-      this._log(`BUILD MODULE: ${folder}`);
-      const object = this._loader(path, folder);
-      this._modules.set(folder, object);
-    });
-
-    if(!folderList.length) {
-      const object = this._loader(path, '');
-      this._modules.set('madres', object);
+    for(const element of elements) {
+   
+      if(element.isFile) {
+        this._log(`LOAD FILE: /${element.name}`, 'blue', 4);
+        const completePath = join(path, element.name);
+        const prop = basename(completePath, '.js');
+        const object = require(completePath);
+        this._modules.set(prop, object);
+      }
+      else {
+        this._log(`LOAD SUBMODULE: ${element.name}`);
+        const object = this._loader(path, element.name);
+        this._modules.set(element.name, object);
+      }    
     }
-
     return this._modules;
   }
 
@@ -47,7 +52,7 @@ module.exports = class Loader {
       if(statSync(completePath).isFile()) {
     
         if(extname(file) === '.js') {
-          this._log(`LOAD: ${name}/${key}/${file}`, 'blue', 3);
+          this._log(`LOAD FILE: ${name}/${key}/${file}`, 'blue', 4);
           const prop = basename(completePath, '.js');
           object[prop] = require(completePath);
         }
@@ -62,8 +67,14 @@ module.exports = class Loader {
     return object;
   }
   
-  _getFolders(path) { 
-    return readdirSync(path).filter(f => statSync(join(path, f)).isDirectory());
+  _getElements(path) { 
+    return readdirSync(path)
+      .map(
+        (name) => ({
+          name,
+          isFile: statSync(join(path, name)).isFile()
+        })
+      );
   }
 
   _log(mesage, color = 'green', pad = 0) {
