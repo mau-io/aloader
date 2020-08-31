@@ -1,5 +1,5 @@
 {
-  "name": "aloader",
+  "name": "atload",
   "version": "1.0.0",
   "description": "Automatic files loader for Node Js.",
   "main": "index.js",
@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/mau-io/aloader.git"
+    "url": "git+ssh://git@github.com/mau-io/atload.git"
   },
   "author": "Maurice T",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mau-io/aloader/issues"
+    "url": "https://github.com/mau-io/atload/issues"
   },
-  "homepage": "https://github.com/mau-io/aloader#readme"
+  "homepage": "https://github.com/mau-io/atload#readme"
 }

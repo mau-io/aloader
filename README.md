@@ -1,10 +1,10 @@
-aloader
+atload
 =========
 This module removes the needs of using require() all over your files.
 
 ## Install
 ```
-$ npm install aloader
+$ npm install atload
 ```
 
 ## Usage
@@ -44,12 +44,12 @@ const subServiceA = require('./services/submodule/subServiceA.js');
 const subServiceB = require('./services/submodule/subServiceB.js');
 ```
 
-You could build a tree with `aloader` like this;
+You could build a tree with `atload` like this;
 
 ```js
 // index.js
-const aloader = require('aloader');
-const services = aloader({
+const atload = require('atload');
+const services = atload({
   path: __dirname + '/services'
 });
 console.log(services);
@@ -78,7 +78,7 @@ services.get('submodule').subServiceB; //  { test: [Function: test] },
 
 ## Api
 
-### aloader({path, verbose})
+### atload({path, verbose})
 
 - **path**: `string`<br/>
 Required. <br/>
@@ -86,11 +86,11 @@ The Directory to load recursively.
 
 - **verbose**: `boolean`<br/>
 Optional. Default: `false`<br/>
-If `true`, the aloader print into console.<br/>
+If `true`, the atload print into console.<br/>
 
 ```js
-const aloader = require('aloader');
-const services = aloader({
+const atload = require('atload');
+const services = atload({
   path: __dirname + '/services',
   verbose: false
 });
@@ -107,4 +107,4 @@ npm tun test
 ```
 
 ## License
-See the [LICENSE](https://github.com/mau-io/aloader/blob/master/LICENCE.md) file for license rights and limitations (MIT).
+See the [LICENSE](https://github.com/mau-io/atload/blob/master/LICENCE.md) file for license rights and limitations (MIT).
