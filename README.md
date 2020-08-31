@@ -23,7 +23,7 @@ app/
     └── serviceC.js
     └── serviceD.js
 ```
-```
+```js
 // serviceA.js, etc.
 module.exports = {
   test: () => {
