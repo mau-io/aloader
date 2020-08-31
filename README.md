@@ -64,6 +64,7 @@ Map(5) {
     subServiceB: { test: [Function: test] }
   }
 }
+**/
 ```
 To get:
 ```js
@@ -106,4 +107,4 @@ npm tun test
 ```
 
 ## License
-See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
+See the [LICENSE](https://github.com/mau-io/aloader/blob/master/LICENCE.md) file for license rights and limitations (MIT).
