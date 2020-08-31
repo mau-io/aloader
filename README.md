@@ -16,11 +16,11 @@ app/
 └── index.js
     services
     ├── submodule
-        ├── subServiceA.js
-        ├── subServiceB.js
+    |   ├── subServiceA.js
+    |   └── subServiceB.js
     ├── serviceA.js
-    └── serviceB.js
-    └── serviceC.js
+    ├── serviceB.js
+    ├── serviceC.js
     └── serviceD.js
 ```
 ```js
